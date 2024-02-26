@@ -3,5 +3,6 @@
 
 for file in *
 do
-	echo "$file"
+	name=$(echo "$file" | cut -d '-' -f 2-)
+	echo "$name"
 done

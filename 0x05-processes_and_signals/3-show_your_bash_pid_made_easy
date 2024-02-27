@@ -6,6 +6,6 @@ bash=$(pgrep -f "bash")
 
 for process in $bash
 do
-	process_name=$(ps -p $process -o comm=)
+	process_name=$(ps -p "$process" -o comm=)
 	echo "$process $process_name"
 done

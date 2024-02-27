@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# I am invincible
+
+handle_term() {
+	echo "I am invincible"
+}
+trap handle_term SIGTERM
+
+while (true)
+do	
+	echo "To infinity and beyond"
+	sleep 2
+done

@@ -5,6 +5,12 @@ handle_term() {
 	echo "I am invincible!!!"
 	sleep 2
 }
+handle_kill() {
+	echo "Killed"
+	exit 0
+}
+
+trap handle_kill SIGKILL
 trap handle_term SIGTERM
 
 while (true)

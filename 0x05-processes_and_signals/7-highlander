@@ -2,7 +2,7 @@
 # I am invincible
 
 handle_term() {
-	echo "I am invincible"
+	echo "I am invincible!!!"
 	sleep 2
 }
 trap handle_term SIGTERM

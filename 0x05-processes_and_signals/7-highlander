@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # I am invincible
+# shellcheck disable=SC2173
 
 handle_term() {
 	echo "I am invincible!!!"

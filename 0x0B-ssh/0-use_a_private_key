@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# use ssh to connect to server
+
+ssh ubuntu@54.237.68.25

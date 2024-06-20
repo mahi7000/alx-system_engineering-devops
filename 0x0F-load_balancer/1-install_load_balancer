@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# install haproxy
+
+command -v haproxy &> /dev/null
+
+if [ $? -ne 0 ]; then
+	sudo apt-get update -y -qq && \
+		sudo apt-get install -y haproxy -qq
+fi
+
+sudo cp /etc/haproxy/haproxy.cfg haproxy_default.backup
+
+server_config=\
+"
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend negest-tech-frontend
+  bind *:80
+  default_backend negest-tech-backend
+
+backend negest-tech-backend
+  balance roundrobin
+  server 480538-web-01 100.27.3.161:80 check
+  server 480538-web-02 54.237.32.252:80 check
+"
+
+echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
+
+echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
+
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	sudo service haproxy start
+else
+	sudo service haproxy restart
+fi

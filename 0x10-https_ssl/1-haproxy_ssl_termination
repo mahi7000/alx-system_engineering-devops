@@ -47,5 +47,5 @@ frontend negest-frontend-https
 
 backend negest-backend
         balance roundrobin
-        server 480538-web-01 100.27.3.161:80 check
-        server 480538-web-02 54.237.32.252:80 check
+        server 480538-web-01 35.175.130.143:80 check
+        server 480538-web-02 54.237.93.121:80 check

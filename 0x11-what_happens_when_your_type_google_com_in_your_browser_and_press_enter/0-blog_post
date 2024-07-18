@@ -1,0 +1,17 @@
+# What Happens When You Type Https://Www.Google.Com In Your Browser and Press Enter
+### DNS Request
+When you type the URL in your browser, the first step is a DNS (Domain Name System) request. DNS is a decentralized system used in computer networks to translate human-readable domain names, into IP addresses. Your browser sends a request to a DNS server to translate the human-readable URL (www.google.com) into an IP address that the computer can understand, and this IP address is used to locate the server hosting the website.
+### TCP/IP
+TCP is commonly used for communication between applications running on different devices. It ensures that data sent from one device is received correctly and in the same order by the receiving device. Once the IP address is obtained, the browser establishes a TCP (Transmission Control Protocol) connection with the server using the IP address. The TCP protocol ensures reliable and ordered transmission of data between your browser and the server.
+### Firewall
+A firewall is a network security device that acts as a barrier between an internal network and external networks. If there is a firewall on the server in place, it may perform security checks on the incoming request to ensure it is safe and authorized to access the server.
+### HTTPS/SSL
+If the website uses HTTPS (Hypertext Transfer Protocol Secure), a secure connection is established using SSL (Secure Sockets Layer). This encryption ensures that the data exchanged between the browser and the server is secure and cannot be intercepted or tampered with by unauthorized parties.
+### Load Balancer
+If the website is high-traffic, a load balancer may be employed. It distributes incoming requests across multiple servers to ensure efficient and effective utilization of resources and improve performance.
+### Web Server
+A web server is a software application that serves web pages to clients. In this step, the request is then sent to the web server hosting the website. The web server processes the request, retrieves the requested webpage, and sends it back to the browser as an HTTP response.
+### Application Server
+An application server sits between the web server and the database server, acting as a middle layer to handle the business. In some cases, the web server may communicate with an application server to process dynamic content or perform additional operations required by the website.
+### Database
+A database is a structured data that is organized, stored, and managed to efficiently retrieve and manipulate information. If the webpage requires data from a database, the application server retrieves the necessary information from the database server and includes it in the response.

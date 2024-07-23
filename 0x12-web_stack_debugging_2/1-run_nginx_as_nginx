@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Switch user from root to nginx for Nginx
 chmod 644 /etc/nginx/nginx.conf
-sed -Ei 's/\s*#?\suser .*/user nginx;/' /etc/nginx/nginx.conf
-sed -Ei 's/(listen (\[::\])?80 /\180 /' /etc/nginx/sites-enabled/default
+sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -Ei 's/(listen (\[::\]:)?80 /\180 /' /etc/nginx/sites-enabled/default
 pkill apache2
 su nginx -s /bin/bash -c 'sudo service nginx restart'

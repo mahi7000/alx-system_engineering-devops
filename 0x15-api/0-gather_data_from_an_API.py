@@ -10,7 +10,7 @@ url = "https://jsonplaceholder.typicode.com"
 
 
 if __name__ == "__main__":
-     if len(sys.argv) > 1:
+    if len(sys.argv) > 1:
         id = int(sys.argv[1])
         req1 = requests.get('{}/users/{}'.format(url, id))
         req2 = requests.get('{}/todos'.format(url))

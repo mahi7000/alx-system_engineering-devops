@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""use REST API for a given employee id and return info about progress"""
+'''
+use REST API for a given employee id and return info about progress
+'''
 
 import requests
 import sys
 
+url = "https://jsonplaceholder.typicode.com"
 
 if __name__ == "__main__":
-    """import rest api for id"""
-    url = "https://jsonplaceholder.typicode.com/"
-
-    if len(sys.argv) > 1:
+     if len(sys.argv) > 1:
         id = int(sys.argv[1])
-        req1 = requests.get('{}users/{}'.format(url, id))
-        req2 = requests.get('{}todos/'.format(url))
+        req1 = requests.get('{}/users/{}'.format(url, id))
+        req2 = requests.get('{}/todos'.format(url))
 
         if req1.status_code == 200 and req2.status_code == 200:
             users = req1.json()

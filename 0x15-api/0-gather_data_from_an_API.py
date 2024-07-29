@@ -29,7 +29,7 @@ if __name__ == "__main__":
                         completed.append(task["title"])
 
             print("Employee {} is done with tasks({}/{})".format(
-                                        name, len(tasks), len(completed)))
+                                        name, len(completed), len(tasks)))
 
             for task in completed:
                 print("\t {}".format(task))

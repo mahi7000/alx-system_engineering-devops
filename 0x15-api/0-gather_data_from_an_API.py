@@ -15,22 +15,21 @@ if __name__ == "__main__":
         req1 = requests.get('{}/users/{}'.format(url, id))
         req2 = requests.get('{}/todos'.format(url))
 
-        if req1.status_code == 200 and req2.status_code == 200:
-            users = req1.json()
-            todos = req2.json()
+        users = req1.json()
+        todos = req2.json()
 
-            name = users['name']
-            tasks = []
-            completed = []
+        name = users['name']
+        tasks = []
+        completed = []
 
-            for task in todos:
-                if task.get("userId") == id:
-                    tasks.append(task["title"])
-                    if task["completed"]:
-                        completed.append(task["title"])
+        for task in todos:
+            if task.get("userId") == id:
+                tasks.append(task["title"])
+                if task["completed"]:
+                    completed.append(task["title"])
 
-            print("Employee {} is done with tasks({}/{}):".format(
-                                        name, len(completed), len(tasks)))
+        print("Employee {} is done with tasks({}/{}):".format(
+                                    name, len(completed), len(tasks)))
 
-            for task in completed:
-                print("\t {}".format(task))
+        for task in completed:
+            print("\t {}".format(task))

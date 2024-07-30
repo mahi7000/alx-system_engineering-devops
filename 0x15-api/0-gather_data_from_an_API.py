@@ -12,24 +12,20 @@ url = "https://jsonplaceholder.typicode.com"
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         id = int(sys.argv[1])
-        req1 = requests.get('{}/users/{}'.format(url, id))
-        req2 = requests.get('{}/todos'.format(url))
-
-        users = req1.json()
-        todos = req2.json()
+        users = requests.get('{}/users/{}'.format(url, id)).json()
+        todos = requests.get('{}/todos'.format(url)).json()
 
         name = users.get('name')
-        tasks = []
-        completed = []
+        tasks = list(filter(lambda x: x.get('userId') == id, todos))
+        completed = list(filter(lambda x: x.get('completed'), tasks))
 
-        for task in todos:
-            if task.get("userId") == id:
-                tasks.append(task["title"])
-                if task.get("completed"):
-                    completed.append(task.get("title"))
-
-        print("Employee {} is done with tasks({}/{}):".format(
-                                    name, len(completed), len(tasks)))
+        print(
+            "Employee {} is done with tasks({}/{}):".format(
+                name,
+                len(completed),
+                len(tasks)
+            )
+        )
 
         for task in completed:
-            print("\t {}".format(task))
+            print('\t {}'.format(task.get('title')))

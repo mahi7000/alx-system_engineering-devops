@@ -18,15 +18,15 @@ if __name__ == "__main__":
         users = req1.json()
         todos = req2.json()
 
-        name = users['name']
+        name = users.get('name')
         tasks = []
         completed = []
 
         for task in todos:
             if task.get("userId") == id:
                 tasks.append(task["title"])
-                if task["completed"]:
-                    completed.append(task["title"])
+                if task.get("completed"):
+                    completed.append(task.get("title"))
 
         print("Employee {} is done with tasks({}/{}):".format(
                                     name, len(completed), len(tasks)))

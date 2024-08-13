@@ -11,11 +11,11 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'TopTen/1.0'}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
+    try:
         data = response.get('data')
         children = data.get('children')
 
         for child in children:
             print(child.get('data').get('title'))
-    else:
+    except Exception:
         print("None")

@@ -1,20 +1,18 @@
 #!/usr/bin/python3
-"""
-Queries the Reddit API and returns the number of subscribers
-"""
+"""Finds and returns the number of subscribers in a subreddit"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """Returns the nubmer of subscribers or 0"""
+    """return the number of subs in {{subreddit}}"""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {'User-Agent': 'UserAgent/1.0'}
+    headers = {"User-Agent": "Subs/1.0"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    try:
+    if response.status_code == 200:
         data = response.json().get("data")
-        subscribers = data.get("subscribers")
-        return subscribers
-    except Exception:
+        subs = data.get("subscribers")
+        return subs
+    else:
         return 0
